@@ -1,19 +1,36 @@
 "use trict"
 
-const CONTENT_IDENTIFIER = 'leftBar'  // identifier for main article
-const SIDEBAR_IDENTIFIER = 'rightBar' // identifier for the side panel
+// identifier for main article
+const CONTENT_IDENTIFIERS = [
+    '#home-page > .article-page_flex > .leftBar',
+    '#main > #primary'
+]
+
+// identifier for the side panel
+const SIDEBAR_IDENTIFIERS = [
+    '#home-page > .article-page_flex > .rightBar',
+    '#main > #secondary'
+]
 const BANNER_CSS_IDENTIFIER = 'eventBannerCSS' // identifier for the event banner
 
-// Removes first occurance of a class if present.
-const remove_first_occurance = function (class_identifier) {
-    let occurance = document.getElementsByClassName(class_identifier)
+// Tries all identifiers, until one works. Removes the first occurance 
+// of an identifier that works.
+const on_first_occurance = function (query_identifiers, on_found) {
+    let occurance_found = false
 
-    if (!occurance || content.length == 0)
-        return false
-    occurance[0].remove()
+    for (let identifier of query_identifiers) {
+        console.log(identifier)
+        let occurance = document.querySelector(identifier)
+        if (!occurance)
+            continue
 
-    return true
+        on_found(occurance)
+        occurance_found = true
+    }
+
+    return occurance_found
 }
+
 
 // Removes all banners from the article.
 const debloat_article_banners = function () {
@@ -26,16 +43,16 @@ const debloat_article_banners = function () {
 // Removes the side panel from the article and sets the article
 // to be maximum width.
 const debloat_content = function () {
-    if (!remove_first_occurance(SIDEBAR_IDENTIFIER))
+
+    let sidebar_found = on_first_occurance(SIDEBAR_IDENTIFIERS,
+        (occurance) => occurance.remove())
+    if (!sidebar_found) // no sidebar was ever found
         return
 
-    let content = document.getElementsByClassName(CONTENT_IDENTIFIER)
-    if (!content || !content.length)
-        return
-
-    content = content[0]
-    content.style.maxWidth = '100%'
-    content.style.flexBasis = '100%'
+    on_first_occurance(CONTENT_IDENTIFIERS, (occurance) => {
+        occurance.style.maxWidth = '100%'
+        occurance.style.flexBasis = '100%'
+    })
 }
 
 debloat_content()

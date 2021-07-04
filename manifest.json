@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "GFGDebloater",
+    "version": "1.0",
+    "description": "Debloats geeksforgeeks.org site to allow for a better reading experience.",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.geeksforgeeks.org/*"
+            ],
+            "js": [
+                "gfg/debloater.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "GFGDebloater",
+    "version": "1.0",
+    "description": "Debloats geeksforgeeks.org site to allow for a better reading experience.",
+    "icons": {
+        "48": "icons/gfgd-48.png",
+        "96": "icons/gfgd-96.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.geeksforgeeks.org/*"
+            ],
+            "js": [
+                "gfg/debloater.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}

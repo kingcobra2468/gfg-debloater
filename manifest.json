@@ -13,7 +13,7 @@
                 "*://*.geeksforgeeks.org/*"
             ],
             "js": [
-                "gfg/debloater.js"
+                "gfgd/debloater.js"
             ],
             "run_at": "document_idle"
         }

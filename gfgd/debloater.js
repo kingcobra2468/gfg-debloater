@@ -13,8 +13,8 @@ const SIDEBAR_IDENTIFIERS = [
 ]
 const BANNER_CSS_IDENTIFIER = 'eventBannerCSS' // identifier for the event banner
 
-// Tries all identifiers, until one works. Removes the first occurance 
-// of an identifier that works.
+// Tries all identifiers, until one works. Performs an on_found call 
+// on the element of an identifier that works.
 const on_first_occurance = function (query_identifiers, on_found) {
     let occurance_found = false
 
@@ -26,11 +26,11 @@ const on_first_occurance = function (query_identifiers, on_found) {
 
         on_found(occurance)
         occurance_found = true
+        break
     }
 
     return occurance_found
 }
-
 
 // Removes all banners from the article.
 const debloat_article_banners = function () {

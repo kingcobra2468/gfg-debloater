@@ -1,4 +1,4 @@
-"use trict"
+"use strict"
 
 // identifier for main article
 const CONTENT_IDENTIFIERS = [
@@ -43,7 +43,6 @@ const debloat_article_banners = function () {
 // Removes the side panel from the article and sets the article
 // to be maximum width.
 const debloat_content = function () {
-
     let sidebar_found = on_first_occurance(SIDEBAR_IDENTIFIERS,
         (occurance) => occurance.remove())
     if (!sidebar_found) // no sidebar was ever found

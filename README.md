@@ -30,7 +30,7 @@ Installation and setup could be achieved by either running the the build locally
 1. Install and setup nodejs and npm on the system.
 2. Clone the repo and install the dependencies via `npm install`.
 3. Create a Firefox developers account and [obtain WRT issuer and WRT secret API keys]('https://addons.mozilla.org/en-US/developers/addon/api/key/'). Export, as enviornmental varaibles, the two keys under the env variables `WEB_EXT_API_KEY` and `WEB_EXT_API_SECRET` respectively. 
-4. Sign the extension via the command `npm run sign-ext`. After a few minutes , the signed extension would be downloaded to `web-ext-artifacts/`. The packaged`.xpi` extension could now be loadaed into Firefox.
+4. Sign the extension via the command `npm run sign-ext`. After a few minutes , the signed extension would be downloaded to `web-ext-artifacts/`. The packaged`.xpi` extension could now be loaded into Firefox.
 
 ### **Jenkins Integration**
 1. Install and setup nodejs and npm on the system.

@@ -19,7 +19,6 @@ const on_first_occurance = function (query_identifiers, on_found) {
     let occurance_found = false
 
     for (let identifier of query_identifiers) {
-        console.log(identifier)
         let occurance = document.querySelector(identifier)
         if (!occurance)
             continue

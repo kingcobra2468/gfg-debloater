@@ -1,0 +1,22 @@
+{
+  "name": "gfgd",
+  "version": "1.0.0",
+  "description": "Debloats geeksforgeeks.org site to allow for a better reading experience.",
+  "main": "",
+  "scripts": {
+    "sign-ext": "web-ext sign"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingcobra2468/GFGDebloater.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kingcobra2468/GFGDebloater/issues"
+  },
+  "homepage": "https://github.com/kingcobra2468/GFGDebloater#readme",
+  "devDependencies": {
+    "web-ext": "^6.2.0"
+  }
+}

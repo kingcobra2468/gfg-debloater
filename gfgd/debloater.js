@@ -1,4 +1,4 @@
-"use trict"
+"use strict"
 
 // identifier for main article
 const CONTENT_IDENTIFIERS = [
@@ -13,8 +13,8 @@ const SIDEBAR_IDENTIFIERS = [
 ]
 const BANNER_CSS_IDENTIFIER = 'eventBannerCSS' // identifier for the event banner
 
-// Tries all identifiers, until one works. Removes the first occurance 
-// of an identifier that works.
+// Tries all identifiers, until one works. Performs an on_found call 
+// on the element of an identifier that works.
 const on_first_occurance = function (query_identifiers, on_found) {
     let occurance_found = false
 
@@ -26,11 +26,11 @@ const on_first_occurance = function (query_identifiers, on_found) {
 
         on_found(occurance)
         occurance_found = true
+        break
     }
 
     return occurance_found
 }
-
 
 // Removes all banners from the article.
 const debloat_article_banners = function () {
@@ -43,7 +43,6 @@ const debloat_article_banners = function () {
 // Removes the side panel from the article and sets the article
 // to be maximum width.
 const debloat_content = function () {
-
     let sidebar_found = on_first_occurance(SIDEBAR_IDENTIFIERS,
         (occurance) => occurance.remove())
     if (!sidebar_found) // no sidebar was ever found

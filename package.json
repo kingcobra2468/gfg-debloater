@@ -4,7 +4,8 @@
   "description": "Debloats geeksforgeeks.org site to allow for a better reading experience.",
   "main": "",
   "scripts": {
-    "sign-ext": "web-ext sign"
+    "sign-ext": "web-ext sign",
+    "fix-format": "npx eslint --fix gfgd/*"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/kingcobra2468/GFGDebloater#readme",
   "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
     "web-ext": "^6.2.0"
   }
 }

@@ -23,6 +23,11 @@ The sidebar is the area that appears to the right of the article (remaining 35% 
 #### **After**
 <img src="screenshots/article_no_sidebar.png"></img>
 
+## **All Changes**
+- Removal of side banner.
+- Removal of Sign Up and Login bloat.
+- removal of ad banner at the start of the article.
+
 ## **Installation**
 Installation and setup could be achieved by either running the the build locally or via Jenkins (via the Jenkinsflie).
 

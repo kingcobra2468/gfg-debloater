@@ -1,57 +1,54 @@
-"use strict"
-
 // identifier for main article
 const CONTENT_IDENTIFIERS = [
-    '#home-page > .article-page_flex > .leftBar',
-    '#main > #primary'
-]
-
+  '#home-page > .article-page_flex > .leftBar',
+  '#main > #primary',
+];
 // identifier for the side panel
 const SIDEBAR_IDENTIFIERS = [
-    '#home-page > .article-page_flex > .rightBar',
-    '#main > #secondary'
-]
-const BANNER_CSS_IDENTIFIER = 'eventBannerCSS' // identifier for the event banner
+  '#home-page > .article-page_flex > .rightBar',
+  '#main > #secondary',
+];
+const BANNER_CSS_IDENTIFIER = 'eventBannerCSS'; // identifier for the event banner
+const SIGN_UP_POP_UP_IDENTIFIER = 'shell';
+const CRED_POP_UP_IDENTIFIER = '#credential_picker_container';
 
-// Tries all identifiers, until one works. Performs an on_found call 
+// Tries all identifiers, until one works. Performs an onFound call
 // on the element of an identifier that works.
-const on_first_occurance = function (query_identifiers, on_found) {
-    let occurance_found = false
+const onFirstInstance = async (identifiers) => {
+  const validIdentifier = identifiers.find((identifier) => document.querySelector(identifier));
+  return document.querySelector(validIdentifier);
+};
 
-    for (let identifier of query_identifiers) {
-        let occurance = document.querySelector(identifier)
-        if (!occurance)
-            continue
-
-        on_found(occurance)
-        occurance_found = true
-        break
-    }
-
-    return occurance_found
-}
-
-// Removes all banners from the article.
-const debloat_article_banners = function () {
-    let imgs = document.getElementsByClassName(BANNER_CSS_IDENTIFIER)
-
-    for (let banner of imgs)
-        banner.remove()
+// Removes all elements for each of the input classes.
+function removeAllClassElements(...classes) {
+  classes.forEach((className) => {
+    Object.values(document.getElementsByClassName(className))
+      .forEach((instance) => instance.remove());
+  });
 }
 
 // Removes the side panel from the article and sets the article
 // to be maximum width.
-const debloat_content = function () {
-    let sidebar_found = on_first_occurance(SIDEBAR_IDENTIFIERS,
-        (occurance) => occurance.remove())
-    if (!sidebar_found) // no sidebar was ever found
-        return
+const expandContent = () => {
+  onFirstInstance(SIDEBAR_IDENTIFIERS)
+    .then((instance) => {
+      if (!instance) {
+        throw new Error('No sidebar found');
+      }
 
-    on_first_occurance(CONTENT_IDENTIFIERS, (occurance) => {
-        occurance.style.maxWidth = '100%'
-        occurance.style.flexBasis = '100%'
+      instance.remove();
+      return onFirstInstance(CONTENT_IDENTIFIERS);
     })
-}
+    .then((instance) => {
+      if (!instance) {
+        throw new Error('No sidebar found');
+      }
 
-debloat_content()
-debloat_article_banners()
+      instance.style.maxWidth = '100%';
+      instance.style.flexBasis = '100%';
+    })
+    .catch((_1) => { });
+};
+
+expandContent();
+removeAllClassElements(BANNER_CSS_IDENTIFIER, SIGN_UP_POP_UP_IDENTIFIER, CRED_POP_UP_IDENTIFIER);

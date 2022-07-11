@@ -1,4 +1,4 @@
-# **GFGDebloater**
+# **GFG Debloater**
 
 A Simple UX improvement and de-bloater extension Firefox meant for the geeksforgeeks.org site. Once a good site, the current UI makes it tedious to read articles as promotions, ads, and recommended pages greatly reduce the content viewport. This extension removes all the bloat and makes the article take up the whole screen (100% width instead of the original 65%).
 

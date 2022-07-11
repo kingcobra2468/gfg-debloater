@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Fetch Sources') {
             steps {
-                git(url: 'https://github.com/kingcobra2468/GFGDebloater.git',
+                git(url: 'https://github.com/kingcobra2468/gfg-debloater.git',
                     branch: params.BRANCH)
             }
         }
